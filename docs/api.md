@@ -1,5 +1,24 @@
 # API Guidelines
 
+## Topics
+- [1 Resources](#1-resources)
+  - [1.1 URLs](#11-urls)
+  - [1.2 Naming conventions](#12-naming-conventions)
+    - [1.2.1 Resource URLs](#121-resource-urls)
+    - [1.2.2 Resource properties (state)](#122-resource-properties-state) 
+- [2 Standard methods](#2-standard-methods)
+  - [2.1 Filtering](#21-filtering)
+  - [2.2 Pagination](#22-pagination)
+    - [2.2.1 Request](#221-request)
+    - [2.2.2 Response](#222-response)
+  - [2.3 Examples](#23-examples)
+    - [2.3.1 List](#231-list)
+    - [2.3.2 Get](#232-get)
+  - [2.4 Status codes](#24-status-codes)
+- [3 Errors](#3-errors)
+  - [3.1 Error payload](#31-error-payload)
+- [4 API documentation](#4-api-documentation)
+
 ## 1 Resources
 There are two kinds of resources:
 * **Collections** are a list of resources of the _same type_.
@@ -133,4 +152,5 @@ Error response should be a json object containing an `error` property. This prop
   }
 }
 ``` 
-
+## 4 API documentation
+For documentation, [Swashbuckle plugin](https://github.com/domaindrivendev/Swashbuckle) **must** be used. Swashbuckle plugin lets us sync code and documentation without the need of manually creating Swagger json/yaml files and duplicating the documentation through comments. For this to work properly though, all **public** API functions must have well formed comments which will be utilized by Visual Studio's Xml document genrator module. 
