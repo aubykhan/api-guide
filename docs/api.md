@@ -17,8 +17,9 @@
   - [2.4 Status codes](#24-status-codes)
 - [3 Errors](#3-errors)
   - [3.1 Error payload](#31-error-payload)
-- [4 API documentation](#4-api-documentation)
-- [5 Security](#5-security)
+- [4 Security](#4-security)
+- [5 Versioning](#5-versioning)
+- [6 API documentation](#7-api-documentation)
 
 ## 1 Resources
 There are two kinds of resources:
@@ -153,10 +154,14 @@ Error response should be a json object containing an `error` property. This prop
   }
 }
 ``` 
-## 4 API documentation
+## 4 Security
+_Contents of this section will be updated soon_
+### 4.1 Authentication
+### 4.2 Scoping
+
+## 5 Versioning
+
+## 6 API documentation
 For documentation, [Swashbuckle plugin](https://github.com/domaindrivendev/Swashbuckle) **must** be used. Swashbuckle plugin lets us sync code and documentation without the need of manually creating Swagger json/yaml files and duplicating the documentation through comments. For this to work properly though, all **public** API functions must have well formed comments which will be utilized by Visual Studio's Xml document genrator module. 
 
-## 5 Security
-_Contents of this section will be updated soon_
-### 5.1 Authentication
-### 5.2 Scoping
+
