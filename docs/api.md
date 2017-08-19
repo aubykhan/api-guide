@@ -18,6 +18,7 @@
 - [3 Errors](#3-errors)
   - [3.1 Error payload](#31-error-payload)
 - [4 Security](#4-security)
+- [6 Licensing and throttling etc](###-6-Licensing-and-throttling-etc)
 - [5 Versioning](#5-versioning)
 - [6 API documentation](#7-api-documentation)
 
@@ -156,12 +157,30 @@ Error response should be a json object containing an `error` property. This prop
 ``` 
 ## 4 Security
 _Contents of this section will be updated soon_
-### 4.1 Authentication
+
+### 4.1 OAuth2
+Depending on the client, there are two types of grants that common for APIs exposed by most enterprise applications.
+
+#### 4.1.1 Resource owner password credentials grant
+With this type of authorization, the credentials (and thus the password) are sent to the client and then to the authorization server. It is therefore imperative that there is absolute trust between these two entities. It is mainly used when the client has been developed by the same authority as the authorization server.
+
+![Password grant - sequence diagram](/img/password.png)
+
+#### 4.1.2 Client credentials grant
+This type of authorization is used when the client is himself the resource owner. There is no authorization to obtain from the end-user.
+
+![Client credentials grant - sequence diagram](/img/client_credentials_flow.png)
+
 ### 4.2 Scoping
+_TBD_
 
-## 5 Versioning
+## 6 Licensing and throttling etc
+_TBD_
 
-## 6 API documentation
+## 7 Versioning
+Backward compatibility is a key aspect of an API. Versioning **must** be done for already published APIs which are enhanced overtime and it could be required to keep multiple versions of the functionality at the same time. 
+
+## 8 API documentation
 For documentation, [Swashbuckle plugin](https://github.com/domaindrivendev/Swashbuckle) **must** be used. Swashbuckle plugin lets us sync code and documentation without the need of manually creating Swagger json/yaml files and duplicating the documentation through comments. For this to work properly though, all **public** API functions must have well formed comments which will be utilized by Visual Studio's Xml document genrator module. 
 
 
