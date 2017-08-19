@@ -164,12 +164,12 @@ Depending on the client, there are two types of grants that common for APIs expo
 #### 4.1.1 Resource owner password credentials grant
 With this type of authorization, the credentials (and thus the password) are sent to the client and then to the authorization server. It is therefore imperative that there is absolute trust between these two entities. It is mainly used when the client has been developed by the same authority as the authorization server.
 
-![Password grant - sequence diagram](docs/img/password.png)
+![Password grant - sequence diagram](img/password.png)
 
 #### 4.1.2 Client credentials grant
 This type of authorization is used when the client is himself the resource owner. There is no authorization to obtain from the end-user.
 
-![Client credentials grant - sequence diagram](docs/img/client_credentials_flow.png)
+![Client credentials grant - sequence diagram](img/client_credentials_flow.png)
 
 ### 4.2 Scoping
 _TBD_
