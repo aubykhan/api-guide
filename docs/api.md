@@ -38,6 +38,7 @@ URL scheme to access the resources is as follows:
 * **Sub-resource:** http://awesomeapi/resource/resoure-id/sub-resource _(e.g. http://awesomeapi/customer/9876/cards)_
 
 ### 1.2 Naming conventions
+
 #### 1.2.1 Resource URLs
 As a rule of thumb, resource names must be **plural nouns** in most cases. E.g:
 * http://awesomeapi/cards _(returns list of cards)_
@@ -59,13 +60,14 @@ Resource properties should follow **camelCase** convention e.g:
 ## 2 Standard methods
 Each resource can support one or more of CRUD operations. These operations are often performed by means of HTTP verbs.
 
-|Method|Http verb|Http request body|Http response body|
-|-|-|-|-|
-|List|GET \<collection URL>|Empty|Resource list 
-|Get|GET \<resource URL>|Empty|Resource
-|Create|POST \<collection URL>|Resource|Resource
-|Update|PUT \<resource URL>|Resource|Resource
-|Delete|DELETE \<resource URL>|Resource|Empty
+|Method|Http verb|Http request body|Http response body|Http Success Code|
+|-|-|-|-|-|
+|List|GET \<collection URL>|Empty|Resource list|200 (OK)
+|Get|GET \<resource URL>|Empty|Resource|200 (OK)
+|Create|POST \<collection URL>|Resource|Resource|201 (Created)
+|Update|PUT \<resource URL>|Resource|Resource|200 (OK)
+|Delete|DELETE \<resource URL>|Resource|Empty|204 (No Content)
+|Partial Update|PATCH \<resource URL>|Json Patch Document|Resource|200 (OK)
 
 ### 2.1 Filtering
 Filtering is mostly applicable on `List` method and **must** be done through **query string parameters**. E.g.
