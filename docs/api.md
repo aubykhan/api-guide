@@ -130,6 +130,9 @@ All successful operations **must** return HTTP `2xx` status code. For **Create**
 
 For more, refer to this [link](http://www.restapitutorial.com/httpstatuscodes.html).
 
+#### 2.4.1 Empty Collection
+Http code `200 (OK)` must be returned in such cases with response body having empty list. In case no resources are found against the filter criteria or pagination provided, Http code `404 (Not Found)` should be returned.
+
 ## 3 Errors
 Http error codes `4xx` must be used for error responses.
 
