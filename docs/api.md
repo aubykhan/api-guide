@@ -6,6 +6,7 @@
   - [1.2 Naming conventions](#12-naming-conventions)
     - [1.2.1 Resource URLs](#121-resource-urls)
     - [1.2.2 Resource properties (state)](#122-resource-properties-state) 
+  - [1.3 Date and time](#13-date-and-time)
 - [2 Standard methods](#2-standard-methods)
   - [2.1 Filtering](#21-filtering)
   - [2.2 Pagination](#22-pagination)
@@ -57,6 +58,8 @@ Resource properties should follow **camelCase** convention e.g:
     ...
 }
 ``` 
+### 1.3 Date and time
+Date and time should follow [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format e.g. 2012-01-01T12:00:00Z.
 
 ## 2 Standard methods
 Each resource can support one or more of CRUD operations. These operations are often performed by means of HTTP verbs.
