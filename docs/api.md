@@ -6,6 +6,7 @@
   - [1.2 Naming conventions](#12-naming-conventions)
     - [1.2.1 Resource URLs](#121-resource-urls)
     - [1.2.2 Resource properties (state)](#122-resource-properties-state) 
+  - [1.3 Date and time](#13-date-and-time)
 - [2 Standard methods](#2-standard-methods)
   - [2.1 Filtering](#21-filtering)
   - [2.2 Pagination](#22-pagination)
@@ -15,7 +16,8 @@
     - [2.3.1 List](#231-list)
     - [2.3.2 Get](#232-get)
   - [2.4 Status codes](#24-status-codes)
-  - [2.5 Expansion](#23-expansion)
+    - [2.4.1 Empty Collection](#241-empty-collection)
+  - [2.5 Expansion](#23-expansion) 
 - [3 Errors](#3-errors)
   - [3.1 Error payload](#31-error-payload)
 - [4 Security](#4-security)
@@ -39,6 +41,7 @@ URL scheme to access the resources is as follows:
 * **Sub-resource:** http://awesomeapi/resource/:resoure-id/sub-resource _(e.g. http://awesomeapi/customer/9876/cards)_
 
 ### 1.2 Naming conventions
+
 #### 1.2.1 Resource URLs
 As a rule of thumb, resource names must be **plural nouns** in most cases. E.g:
 * http://awesomeapi/cards _(returns list of cards)_
@@ -56,17 +59,20 @@ Resource properties should follow **camelCase** convention e.g:
     ...
 }
 ``` 
+### 1.3 Date and time
+Date and time should follow [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format e.g. 2012-01-01T12:00:00Z.
 
 ## 2 Standard methods
 Each resource can support one or more of CRUD operations. These operations are often performed by means of HTTP verbs.
 
-|Method|Http verb|Http request body|Http response body|
-|-|-|-|-|
-|List|GET \<collection URL>|Empty|Resource list 
-|Get|GET \<resource URL>|Empty|Resource
-|Create|POST \<collection URL>|Resource|Resource
-|Update|PUT \<resource URL>|Resource|Resource
-|Delete|DELETE \<resource URL>|Resource|Empty
+|Method|Http verb|Http request body|Http response body|Http Success Code|
+|-|-|-|-|-|
+|List|GET \<collection URL>|Empty|Resource list|200 (OK)
+|Get|GET \<resource URL>|Empty|Resource|200 (OK)
+|Create|POST \<collection URL>|Resource|Resource|201 (Created)
+|Update|PUT \<resource URL>|Resource|Resource|200 (OK)
+|Delete|DELETE \<resource URL>|Resource|Empty|204 (No Content)
+|Partial Update|PATCH \<resource URL>|Json Patch Document|Resource|200 (OK)
 
 ### 2.1 Filtering
 Filtering is mostly applicable on `List` method and **must** be done through **query string parameters**. E.g.
@@ -128,6 +134,9 @@ The response for the above call should look something like:
 All successful operations **must** return HTTP `2xx` status code. For **Create** method, Http code `201` **must** be returned if resource is created successfully.
 
 For more, refer to this [link](http://www.restapitutorial.com/httpstatuscodes.html).
+
+#### 2.4.1 Empty Collection
+Http code `200 (OK)` must be returned in such cases with response body having empty list. In case no resources are found against the filter criteria or pagination provided, Http code `404 (Not Found)` should be returned.
 
 ### 2.5 Expansion
 Often, a resource is required to provide succint as well as detailed information through some kind of query parameter. This is commonly known as expansion in REST world and it is achieved by supporting an `expand` parameter in request query. 
