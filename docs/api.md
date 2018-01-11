@@ -15,6 +15,7 @@
     - [2.3.1 List](#231-list)
     - [2.3.2 Get](#232-get)
   - [2.4 Status codes](#24-status-codes)
+  - [2.5 Expansion](#23-expansion)
 - [3 Errors](#3-errors)
   - [3.1 Error payload](#31-error-payload)
 - [4 Security](#4-security)
@@ -34,8 +35,8 @@ There are two kinds of resources:
 ### 1.1 URLs
 URL scheme to access the resources is as follows:
 * **Collections:** http://awesomeapi/resources _(e.g http://awesomeapi/cards)_
-* **Resource:** http://awesomeapi/resource _(e.g. http://awesomeapi/cards/4321567812345678)_
-* **Sub-resource:** http://awesomeapi/resource/resoure-id/sub-resource _(e.g. http://awesomeapi/customer/9876/cards)_
+* **Resource:** http://awesomeapi/resources/:resource_id _(e.g. http://awesomeapi/cards/4321567812345678)_
+* **Sub-resource:** http://awesomeapi/resource/:resoure-id/sub-resource _(e.g. http://awesomeapi/customer/9876/cards)_
 
 ### 1.2 Naming conventions
 #### 1.2.1 Resource URLs
@@ -127,6 +128,39 @@ The response for the above call should look something like:
 All successful operations **must** return HTTP `2xx` status code. For **Create** method, Http code `201` **must** be returned if resource is created successfully.
 
 For more, refer to this [link](http://www.restapitutorial.com/httpstatuscodes.html).
+
+### 2.5 Expansion
+Often, a resource is required to provide succint as well as detailed information through some kind of query parameter. This is commonly known as expansion in REST world and it is achieved by supporting an `expand` parameter in request query. 
+
+#### Example
+Let's suppose we have an API `GET http://awesomeapi/customers/:customer_id/accounts/:account_id` that returns a user's bank account. The default response for this API could look like:
+```
+{
+  "id": "ihndh1002388jpqoeAJD",
+  "name": "Scooby",
+  "linkedCards": "http://awesomeapi/customers/091029/accounts/ihndh1002388jpqoeAJD/cards",
+  "limits: "http://awesomeapi/customers/091029/accounts/ihndh1002388jpqoeAJD/limits",
+}
+```
+However, if the consumer wants to have `linkedCards` and `limits` in a single call, it can simply use the `expand` paramter in query to get the full dataset. The URL will look something like:
+`GET http://awesomeapi/customers/:customer_id/accounts/:account_id?expand=linkedCards,limits`
+
+The expanded response could look like:
+```
+{
+  "id": "ihndh1002388jpqoeAJD",
+  "name": "Scooby",
+  "linkedCards": [
+    { "cardNumber": "4565789009875432", ...},
+    { "cardNumber": "4565789009875432", ...}  
+  ],
+  "limits: [
+    { "dailyWithdrawal": 50000, ...}
+    { "monthlyWithdrawal": 1000000, ...}
+    { "monthlyPurchase": 1000000, ...}
+  ],
+}
+```
 
 ## 3 Errors
 Http error codes `4xx` must be used for error responses.
