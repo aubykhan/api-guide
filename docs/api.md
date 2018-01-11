@@ -18,7 +18,7 @@
   - [2.4 Status codes](#24-status-codes)
     - [2.4.1 Empty Collection](#241-empty-collection)
   - [2.5 Expansion](#25-expansion) 
-    - [2.5.1 Example](#251-example)
+    - [2.5.1 Using `expand` parameter](#251-using-expand-parameter)
     - [2.5.2 Using summary and detailed responses](#252-using-summary-and-detailed-responses)
     - [2.5.2 References](#252-references)
 - [3 Errors](#3-errors)
