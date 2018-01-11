@@ -19,6 +19,7 @@
     - [2.4.1 Empty Collection](#241-empty-collection)
   - [2.5 Expansion](#25-expansion) 
     - [2.5.1 Example](#251-example)
+    - [2.5.2 Using summary and detailed responses](#252-using-summary-and-detailed-responses)
     - [2.5.2 References](#252-references)
 - [3 Errors](#3-errors)
   - [3.1 Error payload](#31-error-payload)
@@ -141,9 +142,11 @@ For more, refer to this [link](http://www.restapitutorial.com/httpstatuscodes.ht
 Http code `200 (OK)` must be returned in such cases with response body having empty list. In case no resources are found against the filter criteria or pagination provided, Http code `404 (Not Found)` should be returned.
 
 ### 2.5 Expansion
-Often, a resource is required to provide succint as well as detailed information through some kind of query parameter. This is commonly known as expansion in REST world and it is achieved by supporting an `expand` parameter in request query. 
+Often, a resource is required to provide succint as well as detailed information through some kind of query parameter. This is commonly known as expansion in REST world.
 
-#### 2.5.1 Example
+#### 2.5.1 Using `expand` parameter
+Expansion can be achieved by supporting an `expand` parameter in request query. 
+
 Let's suppose we have an API `GET http://awesomeapi/customers/:customer_id/accounts/:account_id` that returns a user's bank account. The default response for this API could look like:
 ```
 {
@@ -172,7 +175,10 @@ The expanded response could look like:
   ],
 }
 ```
-#### 2.5.2 References
+#### 2.5.2 Using summary and detailed responses
+Another way to make the API response flexible, is to hide computationally extension fields from summarized/basic response. This way, a client can chose to have a detailed (slower) response over brief (faster) response at will. 
+
+#### 2.5.3 References
 - [3 ways to make your API responses flexible](https://zapier.com/engineering/flexible-api-responses/)
 - [Expansions in REST API](https://developer.atlassian.com/server/confluence/expansions-in-the-rest-api/)
 
