@@ -17,7 +17,7 @@
     - [2.3.2 Get](#232-get)
   - [2.4 Status codes](#24-status-codes)
     - [2.4.1 Empty Collection](#241-empty-collection)
-  - [2.5 Expansion](#23-expansion) 
+  - [2.5 Expansion](#25-expansion) 
 - [3 Errors](#3-errors)
   - [3.1 Error payload](#31-error-payload)
 - [4 Security](#4-security)
