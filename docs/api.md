@@ -28,9 +28,10 @@
     - [4.1.1 Resource owner password credentials grant](#411-resource-owner-password-credentials-grant)
     - [4.1.2 Client credentials grant](#412-client-credentials-grant)
   - [4.2 Scoping](#42-scoping)
-- [6 Licensing and throttling etc](###-6-Licensing-and-throttling-etc)
-- [5 Versioning](#5-versioning)
-- [6 API documentation](#7-api-documentation)
+- [5 Licensing and throttling etc](###-5-Licensing-and-throttling-etc)
+- [6 Versioning](#6-versioning)
+  - [6.1 Semantic Versioning](#61-semantic-versioning)
+- [7 API documentation](#7-api-documentation)
 
 ## 1 Resources
 There are two kinds of resources:
@@ -232,13 +233,27 @@ This type of authorization is used when the client is himself the resource owner
 ### 4.2 Scoping
 _TBD_
 
-## 6 Licensing and throttling etc
+## 5 Licensing and throttling etc
 _TBD_
 
-## 7 Versioning
+## 6 Versioning
 Backward compatibility is a key aspect of an API. Versioning **must** be done for already published APIs which are enhanced overtime and it could be required to keep multiple versions of the functionality at the same time. 
 
-## 8 API documentation
+_**Note:** APIs should be versioned at the individual call/resource level and not at the service level as whole._
+
+### 6.1 Semantic versioning
+Semantic versioning looks like this: **[Major.Minor.Patch]**. The description of each part is as follows:
+1. **Major**: Breaking (incompatible) change e.g. additional of mandatory fields or removal of fields from request/response.
+2. **Minor**: Non breaking (backwards-compatible change) e.g. additional of optional fields in request/response.
+3. **Patch**: Non breaking (backwards-compatible) bug fixes.
+
+The API URL, however, should only mention major version e.g. http://api.example.com/v1/users
+
+_**Tip:** Full version of the API can be returned in response header in order to let the client know about actual running version._
+
+## 7 API documentation
 For documentation, [Swashbuckle plugin](https://github.com/domaindrivendev/Swashbuckle) **must** be used. Swashbuckle plugin lets us sync code and documentation without the need of manually creating Swagger json/yaml files and duplicating the documentation through comments. For this to work properly though, all **public** API functions must have well formed comments which will be utilized by Visual Studio's Xml document genrator module. 
+
+### [Back to Topics](#topics)
 
 
