@@ -31,6 +31,7 @@
 - [5 Licensing and throttling etc](###-5-Licensing-and-throttling-etc)
 - [6 Versioning](#6-versioning)
   - [6.1 Semantic Versioning](#61-semantic-versioning)
+  - [6.2 Product vs API versions](#-6.2-Product-vs-API-versions)
 - [7 API documentation](#7-api-documentation)
 
 ## 1 Resources
@@ -250,6 +251,30 @@ Semantic versioning looks like this: **[Major.Minor.Patch]**. The description of
 The API URL, however, should only mention major version e.g. http://api.example.com/v1/users
 
 _**Tip:** Full version of the API can be returned in response header in order to let the client know about actual running version._
+
+### 6.2 Product vs API versions
+With each product release which is deployable to the client, most recent version of API resources will be tagged. For example:
+
+```
+Product version: 
+2.3.0
+
+API versions:
+/v1/resource1 (1.2.0)
+/v2/resource2 (2.0.4)
+/v1/resource3 (1.0.0)
+
+Product version: 
+3.0.0
+
+API versions:
+/v2/resouce1 (2.0.0)
+/v2/resource2 (2.1.0)
+/v1/resource3 (1.3.1)
+
+```
+
+Do note that API versions will be locked only at the product release time and for minor internal releases, API versions may not be published.
 
 ## 7 API documentation
 For documentation, [Swashbuckle plugin](https://github.com/domaindrivendev/Swashbuckle) **must** be used. Swashbuckle plugin lets us sync code and documentation without the need of manually creating Swagger json/yaml files and duplicating the documentation through comments. For this to work properly though, all **public** API functions must have well formed comments which will be utilized by Visual Studio's Xml document genrator module. 
