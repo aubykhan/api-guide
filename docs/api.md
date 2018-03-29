@@ -31,7 +31,7 @@
 - [5 Licensing and throttling etc](###-5-Licensing-and-throttling-etc)
 - [6 Versioning](#6-versioning)
   - [6.1 Semantic Versioning](#61-semantic-versioning)
-  - [6.2 Product vs API versions](#-6.2-Product-vs-API-versions)
+  - [6.2 Product vs API versions](#62-Product-vs-API-versions)
 - [7 API documentation](#7-api-documentation)
 
 ## 1 Resources
