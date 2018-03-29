@@ -256,19 +256,19 @@ _**Tip:** Full version of the API can be returned in response header in order to
 Most recent stable version of each API resource will be packaged with every shippable product release. For example:
 
 ```
-Product version: 2.3.0
-Packaged API versions:
-/v1/resource1 (1.2.0)
-/v2/resource2 (2.0.4)
-/v1/resource3 (1.0.0)
-
-----------------------------
-
-Product version: 3.0.0
-Packaged API versions:
-/v2/resouce1 (2.0.0)
-/v2/resource2 (2.1.0)
-/v1/resource3 (1.3.1)
+Product version: 2.3.0      |
+Packaged API versions:      |
+/v1/resource1 (1.2.0)       | Timeline
+/v2/resource2 (2.0.4)       | 
+/v1/resource3 (1.0.0)       |
+                            V
+----------------------      |
+                            |
+Product version: 3.0.0      |
+Packaged API versions:      |     
+/v2/resouce1 (2.0.0)        |
+/v2/resource2 (2.1.0)       |
+/v1/resource3 (1.3.1)       V
 ```
 
 Do note that API versions will be locked only at the product release time and for minor internal releases, API versions may not be published.
