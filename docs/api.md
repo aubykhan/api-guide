@@ -253,25 +253,22 @@ The API URL, however, should only mention major version e.g. http://api.example.
 _**Tip:** Full version of the API can be returned in response header in order to let the client know about actual running version._
 
 ### 6.2 Product vs API versions
-With each product release which is deployable to the client, most recent version of API resources will be tagged. For example:
+Most recent stable version of each API resource will be packaged with every shippable product release. For example:
 
 ```
-Product version: 
-2.3.0
-
-API versions:
+Product version: 2.3.0
+Packaged API versions:
 /v1/resource1 (1.2.0)
 /v2/resource2 (2.0.4)
 /v1/resource3 (1.0.0)
 
-Product version: 
-3.0.0
+----------------------------
 
-API versions:
+Product version: 3.0.0
+Packaged API versions:
 /v2/resouce1 (2.0.0)
 /v2/resource2 (2.1.0)
 /v1/resource3 (1.3.1)
-
 ```
 
 Do note that API versions will be locked only at the product release time and for minor internal releases, API versions may not be published.
